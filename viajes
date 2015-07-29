@@ -1,0 +1,4 @@
+SELECT Sum([Viaje]![FactorLaboralNormal]*[Persona]![Factor_LaboralNormal]) AS Viajes, ModoAgregado, Etapas
+FROM Persona INNER JOIN Viaje ON Persona.Persona = Viaje.Persona
+where ModoAgregado in (2, 4, 9)
+GROUP BY ModoAgregado, Etapas;
