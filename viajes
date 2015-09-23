@@ -2,3 +2,8 @@ SELECT Sum([Viaje]![FactorLaboralNormal]*[Persona]![Factor_LaboralNormal]) AS Vi
 FROM Persona INNER JOIN Viaje ON Persona.Persona = Viaje.Persona
 where ModoAgregado in (2, 4, 9)
 GROUP BY ModoAgregado, Etapas;
+--------------------------------------------------------------------------------
+SELECT ZonaOrigen, ZonaDestino,  ModoAgregado, Etapas, Sum([Viaje]![FactorLaboralNormal]*[Persona]![Factor_LaboralNormal]) AS Viajes
+FROM Persona INNER JOIN Viaje ON Persona.Persona = Viaje.Persona
+WHERE ModoAgregado = 18
+GROUP BY Etapas,  ModoAgregado, ZonaOrigen, ZonaDestino;
