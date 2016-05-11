@@ -1,0 +1,6 @@
+SELECT DISTINCT(Persona.Persona) AS Per, TramoIngresoFinal, Hogar.Zona, ([Viaje]![FactorLaboralNormal]*[Persona]![Factor_LaboralNormal]) AS VdViaje, Viaje.ModoAgregado, RecorridoTxc, RecorridoTransantiago
+FROM (((Persona INNER JOIN Viaje ON Persona.Persona = Viaje.Persona)
+INNER JOIN Hogar ON Persona.Hogar = Hogar.Hogar)
+INNER JOIN Etapa ON Persona.Persona = Etapa.Persona)
+WHERE Zona = 330
+GROUP BY Persona.Persona, TramoIngresoFinal, Hogar.Zona, Viaje.ModoAgregado, RecorridoTxc, RecorridoTransantiago, ([Viaje]![FactorLaboralNormal]*[Persona]![Factor_LaboralNormal])
