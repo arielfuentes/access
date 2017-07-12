@@ -1,0 +1,3 @@
+SELECT Sum([Viaje]![FactorLaboral]) AS Viajes,[Comuna Ori].Comuna AS ComOrigen, [Comuna Des].Comuna AS ComDestino, Periodo.Periodos, [TramoIngreso Final].TramoIngreso
+FROM (((([Comuna Ori] INNER JOIN Viaje ON [Comuna Ori].ID = Viaje.ComunaOrigen) INNER JOIN [Comuna Des] ON [Comuna Des].ID = Viaje.ComunaDestino) INNER JOIN Periodo ON Periodo.ID = Viaje.Periodo) INNER JOIN Persona ON (Persona.Hogar = Viaje.Hogar) AND (Persona.Persona = Viaje.Persona)) INNER JOIN [TramoIngreso Final] ON [TramoIngreso Final].ID = Persona.TramoIngresoFinal
+GROUP BY [Comuna Ori].Comuna, [Comuna Des].Comuna, Periodo.Periodos, [TramoIngreso Final].TramoIngreso;
