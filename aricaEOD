@@ -1,0 +1,6 @@
+TRANSFORM Sum(viaje.Factor) AS SumaDeFactor
+SELECT Zonas.Zona AS [ORIGEN/DESTINO]
+FROM (Hogar INNER JOIN persona ON Hogar.IDFolio = persona.IDFolio) INNER JOIN (Zonas AS Zonas_1 INNER JOIN (Zonas INNER JOIN viaje ON Zonas.Zona = viaje.ZonaOrigen) ON Zonas_1.Zona = viaje.ZonaDestino) ON (persona.IDPersona = viaje.IDPersona) AND (persona.IDFolio = viaje.IDFolio)
+WHERE (((viaje.valida)=1))
+GROUP BY Zonas.Zona
+PIVOT Zonas_1.Zona;
